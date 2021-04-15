@@ -1,7 +1,7 @@
 use uuid::Uuid;
 
 mod filemod;
-use filemod::get_uud;
+use filemod::get_uuid;
 
 mod foldermodule;
 use foldermodule::foldermodulefile::{ folder_module_uuid };
@@ -13,7 +13,7 @@ use database::database_fns::{ database_module_uuid, DB };
 fn main() {
 
     // Example code to show how modules work, will remove
-    let file_mod_uuid = get_uud();
+    let file_mod_uuid = get_uuid();
     println!("local module uuid is {}", file_mod_uuid);
     let folder_mod_uuid = folder_module_uuid();
     println!("folder module uuid is {}", folder_mod_uuid);
