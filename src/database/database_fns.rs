@@ -119,7 +119,7 @@ fn cosine(vec1: &Vec<f64>, vec2: &Vec<f64>) -> f64 {
 fn dot(vec1: &Vec<f64>, vec2: &Vec<f64>) -> f64 {
     vec1.iter()
         .zip(vec2.iter())
-        .fold(0.0, |sum, (&v1, &v2)| sum + (v1 * v2));
+        .fold(0.0, |sum, (&v1, &v2)| sum + (v1 * v2))
 }
 
 fn norm(a: &Vec<f64>) -> f64 {
