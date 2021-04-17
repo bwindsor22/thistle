@@ -19,13 +19,13 @@ fn main() {
     println!("database_module_uuid is {}", database_module_uuid);
 
     let texts = [
-        "do not go gentle".to_string(),
-        "into that good night".to_string(),
-        "old age should burn and rave".to_string(),
+        "Do not go gentle into that good night".to_string(),
+        "Shall I compare thee to a summer's day".to_string(),
+        "What happens to a dream deferred?".to_string()
     ]
     .to_vec();
     let db = DB::load(texts);
-    let result = db.query("at close of day".to_string(), 0.5);
+    let result = db.query("stay strong as you grow older".to_string(), 0.05);
     for doc in result {
         println!("{}", doc.get_text());
     }
