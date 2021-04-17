@@ -1,12 +1,29 @@
 [package]
 name = "thistle"
 version = "0.1.0"
-authors = ["Brad Windsor <bwindsor22@gmail.com>"]
+authors = ["Brad Windsor <bwindsor22@gmail.com>", "Kevin Choi <kc2296@nyu.edu>"]
 edition = "2018"
+default-run = "thistle"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 rand = "0.6.0"
 uuid = { version = "0.7", features = ["serde", "v4"] }
-sbert = "0.3.0"
+rust-bert = "0.6.2"
+rust_tokenizers = "2.0.4"
+tch = "0.1.6"
+serde_json = "1.0.45"
+serde = {version = "1.0.104", features = ["derive"]}
+failure = "0.1.6"
+log = "0.4.8"
+dirs = "2.0.2"
+
+[lib]
+name = "thistle"
+path = "src/lib.rs"
+
+[[bin]]
+name = "convert-tensor"
+path = "src/bin/convert-tensor.rs"
+doc = false
