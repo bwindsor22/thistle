@@ -12,6 +12,10 @@ wget -P models https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-tr
 
 unzip models/bert-base-nli-stsb-mean-tokens.zip -d models/bert-base-nli-stsb-mean-tokens
 
+python3 -m venv thistle-env
+
+source thistle-env/bin/activate
+
 pip install torch
 
 python utils/convert_model.py models/bert-base-nli-stsb-mean-tokens
