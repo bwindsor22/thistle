@@ -18,7 +18,8 @@ source thistle-env/bin/activate
 
 pip install torch
 
-python utils/convert_model.py models/bert-base-nli-stsb-mean-tokens
+export PWD=`pwd`
+python3 utils/convert_model.py $PWD/models/bert-base-nli-stsb-mean-tokens/0_BERT/pytorch_model.bin
 ```
 
 ### References
