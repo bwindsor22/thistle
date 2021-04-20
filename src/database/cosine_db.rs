@@ -1,18 +1,18 @@
-// use rand::Rng;
 use uuid::Uuid;
-use std::path::Path;
-use tch::{Tensor, Kind, Device, nn, Cuda, no_grad};
-use thistle::model::SentenceTransformer;
+use std::slice;
+use crate::database::embeddings::get_embedding;
 
 pub struct Doc {
     text: String,
     embedding: Vec<f64>,
+    similarity: f64,
 }
 
 impl Doc {
     pub fn get_text(&self) -> String {
         self.text.clone()
     }
+
 }
 
 pub struct DB {
@@ -27,42 +27,30 @@ impl DB {
             docs.push(Doc {
                 text: text,
                 embedding: vect,
+                similarity: 0.0,
             })
         }
         DB { docs }
     }
 
-    pub fn query(self, query: String, threshold: f64) -> Vec<Doc> {
+    pub fn query(self, query: String, n: u32) -> Vec<Doc> {
         let mut result = Vec::new();
         let query_embedding = get_embedding(&query);
         for doc in self.docs.iter() {
-            if cosine(&doc.embedding, &query_embedding) > threshold {
-                result.push(Doc {
-                    text: doc.text.clone(),
-                    embedding: doc.embedding.clone(),
-                });
-            }
+            let similarity = cosine(&doc.embedding, &query_embedding);
+            result.push(Doc {
+                text: doc.text.clone(),
+                embedding: doc.embedding.clone(),
+                similarity: similarity,
+            });
         }
-        result
+
+        result.sort_by(|a, b| b.similarity.partial_cmp(&a.similarity).unwrap());
+
+        result.drain(..n as usize).collect()
     }
 }
 
-fn get_embedding(text: &str) -> Vec<f64> {
-    // let mut rng = rand::thread_rng();
-    // let vals: Vec<f64> = (0..100).map(|_| rng.gen_range(0.0, 1.0)).collect();
-    // vals
-
-    let device = Device::Cpu;
-
-    let embedder = SentenceTransformer::new(
-        Path::new("models/bert-base-nli-stsb-mean-tokens"),
-        device).unwrap();
-
-    let embedding = embedder.encode(text);
-    // For dev purposes
-    println!("&embedding[..5] of {}: {:?}", text, &embedding[..5]);
-    embedding
-}
 
 fn cosine(vec1: &Vec<f64>, vec2: &Vec<f64>) -> f64 {
     let norms = norm(vec1) * norm(vec2);

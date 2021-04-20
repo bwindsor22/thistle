@@ -17,6 +17,14 @@ pip install torch
 python utils/convert_model.py models/bert-base-nli-stsb-mean-tokens
 ```
 
+2. Modifying Rust
+This project uses some features of rust that are not yet on the stable build. To use the nightly build, set 
+``` 
+rustup toolchain install nightly
+
+rustup default nightly
+```
+
 ### References
 * [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/pdf/1810.04805.pdf)
 * [RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/pdf/1907.11692.pdf)

@@ -84,7 +84,7 @@ impl Bert {
         };
 
         let max_seq_length = if max_seq_length > 510 {
-            warn!("Bert only allows a max_seq_length of 510 (512 with special tokens). Value will be set to 510");
+            println!("Bert only allows a max_seq_length of 510 (512 with special tokens). Value will be set to 510");
             510
         } else {
             max_seq_length

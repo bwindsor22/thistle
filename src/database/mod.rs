@@ -1,1 +1,2 @@
-pub mod database_fns;
+pub mod cosine_db;
+pub mod embeddings;
