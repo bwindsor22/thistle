@@ -1,2 +1,4 @@
+pub mod db;
 pub mod cosine_db;
-pub mod embeddings;
+pub mod euclidean_db;
+pub mod embedding;

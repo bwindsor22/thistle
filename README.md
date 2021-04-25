@@ -19,12 +19,12 @@ source thistle-env/bin/activate
 pip install torch
 
 export PWD=`pwd`
+
 python3 utils/convert_model.py $PWD/models/bert-base-nli-stsb-mean-tokens/0_BERT/pytorch_model.bin
 ```
 
-2. Modifying Rust
-This project uses some features of rust that are not yet on the stable build. To use the nightly build, set 
-``` 
+2. Modifying Rust. This project uses some features of Rust that are not yet on the stable build. To use the nightly build, set:
+```
 rustup toolchain install nightly
 
 rustup default nightly

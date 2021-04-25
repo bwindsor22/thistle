@@ -1,5 +1,5 @@
 use std::path::Path;
-use tch::{Tensor, Kind, Device, nn, Cuda, no_grad};
+use tch::Device;
 use crate::model::SentenceTransformer;
 
 

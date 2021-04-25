@@ -1,39 +1,34 @@
 use uuid::Uuid;
-use std::slice;
-use crate::database::embeddings::get_embedding;
+use crate::database::embedding::get_embedding;
+use crate::database::db::{Operations, Doc};
 
-pub struct Doc {
-    text: String,
-    embedding: Vec<f64>,
-    similarity: f64,
+// impl Doc {
+//     pub fn get_text(&self) -> String {
+//         self.text.clone()
+//     }
+
+// }
+
+#[derive(Debug)]
+pub struct CosineDB {
+    pub docs: Vec<Doc>,
 }
 
-impl Doc {
-    pub fn get_text(&self) -> String {
-        self.text.clone()
-    }
-
-}
-
-pub struct DB {
-    docs: Vec<Doc>,
-}
-
-impl DB {
-    pub fn load(texts: Vec<String>) -> Self {
-        let mut docs = Vec::new();
+impl Operations for CosineDB {
+    fn load(&mut self, texts: Vec<String>) {
+        // let mut docs = Vec::new();
         for text in texts {
             let vect = get_embedding(&text);
-            docs.push(Doc {
+            self.docs.push(Doc {
                 text: text,
                 embedding: vect,
                 similarity: 0.0,
             })
         }
-        DB { docs }
+        // CosineDB { docs }
     }
 
-    pub fn query(self, query: String, n: u32) -> Vec<Doc> {
+    fn query(&self, query: String, n: u32) -> Vec<Doc> {
         let mut result = Vec::new();
         let query_embedding = get_embedding(&query);
         for doc in self.docs.iter() {
