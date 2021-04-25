@@ -39,6 +39,7 @@ impl Pooling {
         let pooling_mode_mean_tokens = if let Some(value) = config.pooling_mode_mean_tokens {
             value
         } else {
+            // Forcing MEAN to be the default
             true
         };
         let pooling_mode_mean_sqrt_len_tokens =
