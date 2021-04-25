@@ -1,6 +1,5 @@
+// Run `cargo test -- --nocapture` to view println!
 #![feature(array_map)]
-extern crate thistle;
-
 
 #[test]
 fn make_uuid() {
@@ -20,5 +19,6 @@ fn run_cosine_db() {
     .to_vec();
     let db = thistle::database::cosine_db::DB::load(texts);
     let result = db.query("stay strong as you grow older".to_string(), 1);
-    assert_eq!("Do not go gentle into that good night", result[0].get_text());
+    // println!("{:?}", result);
+    assert_eq!("Do not go gentle into that good night", result[0].text);
 }

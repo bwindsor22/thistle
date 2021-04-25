@@ -1,4 +1,4 @@
-use crate::model::bert::Features;
+use crate::model::Features;
 use rust_bert::Config;
 use serde::{Deserialize, Serialize};
 use std::f32;

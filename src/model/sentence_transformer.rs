@@ -3,8 +3,8 @@ use std::path::Path;
 use rust_bert::Config;
 use tch::{no_grad, Device, Tensor};
 
-use crate::model::bert::{Bert, Features};
-use crate::model::pooling::{Pooling, PoolingConfig};
+use crate::model::{Bert, Features};
+use crate::model::{Pooling, PoolingConfig};
 
 pub struct SentenceTransformer {
     pub bert: Bert,

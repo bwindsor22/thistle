@@ -1,19 +1,19 @@
 use uuid::Uuid;
-use std::slice;
 use crate::database::embeddings::get_embedding;
 
+#[derive(Debug)]
 pub struct Doc {
-    text: String,
-    embedding: Vec<f64>,
-    similarity: f64,
+    pub text: String,
+    pub embedding: Vec<f64>,
+    pub similarity: f64,
 }
 
-impl Doc {
-    pub fn get_text(&self) -> String {
-        self.text.clone()
-    }
+// impl Doc {
+//     pub fn get_text(&self) -> String {
+//         self.text.clone()
+//     }
 
-}
+// }
 
 pub struct DB {
     docs: Vec<Doc>,
