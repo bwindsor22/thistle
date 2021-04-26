@@ -127,7 +127,7 @@ impl Pooling {
             }
 
             if self.pooling_mode_mean_sqrt_len_tokens {
-                output_vectors.push(&sum_embeddings / &sum_mask.sqrt())
+                output_vectors.push(&sum_embeddings / &sum_mask.sqrt());
             }
 
             &output_vectors

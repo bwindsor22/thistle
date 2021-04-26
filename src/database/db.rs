@@ -1,16 +1,30 @@
+use uuid::Uuid;
 use crate::database::cosine_db::CosineDB;
+use crate::database::euclidean_db::EuclideanDB;
+
+pub fn database_module_uuid() -> String {
+    Uuid::new_v4().to_string()
+}
 
 #[derive(Debug)]
 pub struct Doc {
     pub text: String,
     pub embedding: Vec<f64>,
-    pub similarity: f64,
+    pub score: f64,
 }
 
 #[derive(Debug)]
 pub enum DB {
-    Cosine(CosineDB),
-    // Euclidean(EuclideanDB),
+    CosineDB(CosineDB),
+    EuclideanDB(EuclideanDB),
+}
+
+pub fn new(db_method: &str) -> DB {
+    match db_method {
+        "Cosine" => DB::CosineDB(CosineDB { docs: Vec::new() }),
+        "Euclidean" => DB::EuclideanDB(EuclideanDB { docs: Vec::new() }),
+        _ => DB::CosineDB(CosineDB { docs: Vec::new() }),
+    }
 }
 
 pub trait Operations {
@@ -18,26 +32,18 @@ pub trait Operations {
     fn query(&self, query: String, n: u32) -> Vec<Doc>;
 }
 
-pub fn new(db_method: &str) -> DB {
-    match db_method {
-        "Cosine" => DB::Cosine(CosineDB { docs: Vec::new() }),
-        _ => DB::Cosine(CosineDB { docs: Vec::new() }),
-
-    }
-}
-
 impl Operations for DB {
     fn load(&mut self, texts: Vec<String>) {
         match self {
-            DB::Cosine(db) => db.load(texts),
-            // DB::CosineDB(db) => db.load(),
+            DB::CosineDB(db) => db.load(texts),
+            DB::EuclideanDB(db) => db.load(texts),
         }
     }
 
     fn query(&self, query: String, n: u32) -> Vec<Doc> {
         match self {
-            DB::Cosine(db) => db.query(query, n),
-            // DB::CosineDB(db) => db.load(),
+            DB::CosineDB(db) => db.query(query, n),
+            DB::EuclideanDB(db) => db.query(query, n),
         }
     }
 }
