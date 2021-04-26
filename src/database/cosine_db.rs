@@ -1,13 +1,5 @@
-use uuid::Uuid;
 use crate::database::embedding::get_embedding;
 use crate::database::db::{Operations, Doc};
-
-// impl Doc {
-//     pub fn get_text(&self) -> String {
-//         self.text.clone()
-//     }
-
-// }
 
 #[derive(Debug)]
 pub struct CosineDB {
@@ -16,43 +8,40 @@ pub struct CosineDB {
 
 impl Operations for CosineDB {
     fn load(&mut self, texts: Vec<String>) {
-        // let mut docs = Vec::new();
         for text in texts {
             let vect = get_embedding(&text);
             self.docs.push(Doc {
                 text: text,
                 embedding: vect,
-                similarity: 0.0,
-            })
+                score: 0.0,
+            });
         }
-        // CosineDB { docs }
     }
 
     fn query(&self, query: String, n: u32) -> Vec<Doc> {
         let mut result = Vec::new();
         let query_embedding = get_embedding(&query);
         for doc in self.docs.iter() {
-            let similarity = cosine(&doc.embedding, &query_embedding);
+            let score = cosine(&doc.embedding, &query_embedding);
             result.push(Doc {
                 text: doc.text.clone(),
                 embedding: doc.embedding.clone(),
-                similarity: similarity,
+                score: score,
             });
         }
 
-        result.sort_by(|a, b| b.similarity.partial_cmp(&a.similarity).unwrap());
+        result.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap());
 
         result.drain(..n as usize).collect()
     }
 }
-
 
 fn cosine(vec1: &Vec<f64>, vec2: &Vec<f64>) -> f64 {
     let norms = norm(vec1) * norm(vec2);
     if norms > 0. {
         let res = dot(vec1, vec2) / (norm(vec1) * norm(vec2));
         // For dev purposes
-        println!("cosine {}", res);
+        println!("Cosine {}", res);
         return res;
     }
     return 0.;
@@ -66,8 +55,4 @@ fn dot(vec1: &Vec<f64>, vec2: &Vec<f64>) -> f64 {
 
 fn norm(a: &Vec<f64>) -> f64 {
     dot(a, a).sqrt()
-}
-
-pub fn database_module_uuid() -> String {
-    Uuid::new_v4().to_string()
 }
