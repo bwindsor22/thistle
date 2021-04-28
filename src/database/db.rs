@@ -25,7 +25,7 @@ pub fn new(db_method: &str) -> DB {
     match db_method {
         "Cosine" => DB::CosineDB(CosineDB { docs: Vec::new() }),
         "Euclidean" => DB::EuclideanDB(EuclideanDB { docs: Vec::new() }),
-        "Hnsw" => DB::HnswDB(HnswDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistL2 {})}),
+        "Hnsw" => DB::HnswDB(HnswDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistL2 {}) }),
         _ => DB::CosineDB(CosineDB { docs: Vec::new() }),
     }
 }
