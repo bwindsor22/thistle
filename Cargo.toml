@@ -7,6 +7,10 @@ default-run = "thistle"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[example]]
+name = "random"
+path = "examples/random.rs"
+
 [dependencies]
 rand = "0.6.0"
 uuid = { version = "0.7", features = ["serde", "v4"] }
@@ -18,6 +22,20 @@ serde = {version = "1.0.104", features = ["derive"]}
 failure = "0.1.6"
 log = "0.4.8"
 dirs = "2.0.2"
+bincode = {version = "1.3"}
+parking_lot = "0.11"
+rayon = {version = "1.5"}
+num_cpus = {version = "1.8.0"}
+simdeez = {version = "1.0"}
+cpu-time = {version = "1.0"}
+time = {version = "0.2"}
+ndarray = {version = "0.14"}
+clap = {version = "2.29"}
+hashbrown = {version = "0.9"}
+skiplist = {version = "0.3"}
+# lazy_static = { version = "1.4"}
+# env_logger = { version = "0.8"}
+# hdf5 = {version = "0.7"}
 
 [lib]
 name = "thistle"
