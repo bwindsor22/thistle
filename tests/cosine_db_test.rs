@@ -1,4 +1,3 @@
-// Run `cargo test -- --nocapture` to view println!
 #![feature(array_map)]
 use thistle::database::Operations;
 
