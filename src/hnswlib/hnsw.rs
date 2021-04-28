@@ -22,7 +22,7 @@ use std::collections::binary_heap::BinaryHeap;
 use log::debug;
 use log::trace;
 
-pub use crate::hnswlib::dist::Distance;
+pub use crate::hnswlib::*;
 
 
 // TODO
@@ -1251,7 +1251,6 @@ pub(crate) fn check_graph_equality<T1, D1, T2, D2>(hnsw1:&Hnsw<T1,D1>, hnsw2: &H
 mod tests {
 
 use super::*;
-use crate::hnswlib::dist;
 
 use rand::distributions::{Uniform};
 
@@ -1281,7 +1280,7 @@ fn test_iter_point() {
     let ef_construct= 25;
     let nb_connection = 10;
     let start = ProcessTime::now();
-    let hns = Hnsw::<f32, dist::DistL1>::new(nb_connection, nbcolumn, 16, ef_construct, dist::DistL1{});
+    let hns = Hnsw::<f32, DistL1>::new(nb_connection, nbcolumn, 16, ef_construct, DistL1{});
     for i in 0..data.len() {
         hns.insert((&data[i], i));
     }

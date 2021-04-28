@@ -2,6 +2,7 @@ use uuid::Uuid;
 use crate::database::cosine_db::CosineDB;
 use crate::database::euclidean_db::EuclideanDB;
 use crate::database::hnsw_db::HnswDB;
+use crate::hnswlib::*;
 
 pub fn database_module_uuid() -> String {
     Uuid::new_v4().to_string()
@@ -14,7 +15,6 @@ pub struct Doc {
     pub score: f64,
 }
 
-#[derive(Debug)]
 pub enum DB {
     CosineDB(CosineDB),
     EuclideanDB(EuclideanDB),
@@ -25,7 +25,7 @@ pub fn new(db_method: &str) -> DB {
     match db_method {
         "Cosine" => DB::CosineDB(CosineDB { docs: Vec::new() }),
         "Euclidean" => DB::EuclideanDB(EuclideanDB { docs: Vec::new() }),
-        "Hnsw" => DB::HnswDB(HnswDB { docs: Vec::new() }),
+        "Hnsw" => DB::HnswDB(HnswDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistL2 {})}),
         _ => DB::CosineDB(CosineDB { docs: Vec::new() }),
     }
 }
