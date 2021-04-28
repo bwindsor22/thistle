@@ -7,10 +7,6 @@ default-run = "thistle"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[[example]]
-name = "random"
-path = "examples/random.rs"
-
 [dependencies]
 rand = "0.6.0"
 uuid = { version = "0.7", features = ["serde", "v4"] }
