@@ -2,12 +2,12 @@ use crate::database::embedding::get_embedding;
 use crate::database::db::{Operations, Doc};
 use crate::hnswlib::*;
 
-pub struct HnswDB {
+pub struct HnswEuclideanDB {
     pub docs: Vec<Doc>,
     pub hnsw: Hnsw<f64, DistL2>,
 }
 
-impl Operations for HnswDB {
+impl Operations for HnswEuclideanDB {
     fn load(&mut self, texts: Vec<String>) {
         let nb_elem = texts.len();
         let mut data = Vec::new();

@@ -1,7 +1,8 @@
 use uuid::Uuid;
 use crate::database::cosine_db::CosineDB;
 use crate::database::euclidean_db::EuclideanDB;
-use crate::database::hnsw_db::HnswDB;
+use crate::database::hnsw_euclidean_db::HnswEuclideanDB;
+use crate::database::hnsw_cosine_db::HnswCosineDB;
 use crate::hnswlib::*;
 
 pub fn database_module_uuid() -> String {
@@ -18,14 +19,16 @@ pub struct Doc {
 pub enum DB {
     CosineDB(CosineDB),
     EuclideanDB(EuclideanDB),
-    HnswDB(HnswDB),
+    HnswEuclideanDB(HnswEuclideanDB),
+    HnswCosineDB(HnswCosineDB),
 }
 
 pub fn new(db_method: &str) -> DB {
     match db_method {
         "Cosine" => DB::CosineDB(CosineDB { docs: Vec::new() }),
         "Euclidean" => DB::EuclideanDB(EuclideanDB { docs: Vec::new() }),
-        "Hnsw" => DB::HnswDB(HnswDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistL2 {}) }),
+        "Hnsw_Euclidean" => DB::HnswEuclideanDB(HnswEuclideanDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistL2 {}) }),
+        "Hnsw_Cosine" => DB::HnswCosineDB(HnswCosineDB { docs: Vec::new(), hnsw: Hnsw::new(1, 1, 1, 1, DistCosine {}) }),
         _ => DB::CosineDB(CosineDB { docs: Vec::new() }),
     }
 }
@@ -40,7 +43,8 @@ impl Operations for DB {
         match self {
             DB::CosineDB(db) => db.load(texts),
             DB::EuclideanDB(db) => db.load(texts),
-            DB::HnswDB(db) => db.load(texts),
+            DB::HnswEuclideanDB(db) => db.load(texts),
+            DB::HnswCosineDB(db) => db.load(texts),
         }
     }
 
@@ -48,7 +52,8 @@ impl Operations for DB {
         match self {
             DB::CosineDB(db) => db.query(query, n),
             DB::EuclideanDB(db) => db.query(query, n),
-            DB::HnswDB(db) => db.query(query, n),
+            DB::HnswEuclideanDB(db) => db.query(query, n),
+            DB::HnswCosineDB(db) => db.query(query, n),
         }
     }
 }

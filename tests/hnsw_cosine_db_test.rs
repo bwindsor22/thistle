@@ -2,7 +2,7 @@
 use thistle::database::Operations;
 
 #[test]
-fn run_hnsw_db() {
+fn run_hnsw_cosine_db() {
     let texts = [
         "Do not go gentle into that good night",
         "Shall I compare thee to a summer's day",
@@ -10,7 +10,7 @@ fn run_hnsw_db() {
     ]
     .map(|x| x.to_string())
     .to_vec();
-    let mut db = thistle::database::new("Hnsw");
+    let mut db = thistle::database::new("Hnsw_Cosine");
     db.load(texts);
     let result = db.query("stay strong as you grow older".to_string(), 1);
     println!("{:?}", result);
