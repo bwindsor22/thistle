@@ -1,7 +1,6 @@
 use crate::database::embedding::get_embedding;
 use crate::database::db::{Operations, Doc};
 
-#[derive(Debug)]
 pub struct CosineDB {
     pub docs: Vec<Doc>,
 }
