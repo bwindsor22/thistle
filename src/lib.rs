@@ -2,6 +2,7 @@ pub mod filemod;
 pub mod foldermodule;
 pub mod database;
 pub mod model;
+pub mod hnswlib;
 
 // #![allow(dead_code, non_snake_case)]
 #[cfg(feature = "blas")]
