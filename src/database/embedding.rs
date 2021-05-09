@@ -2,6 +2,7 @@ use std::path::Path;
 use tch::Device;
 use crate::model::SentenceTransformer;
 
+pub const EMBEDDING_SIZE: i32 = 768;
 
 pub fn get_embedding(text: &str) -> Vec<f64> {
     let device = Device::Cpu;
