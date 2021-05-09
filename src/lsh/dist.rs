@@ -1,5 +1,5 @@
 //! Distance/ similarity functions.
-use crate::data::Numeric;
+use crate::lsh::data::Numeric;
 use ndarray::prelude::*;
 use num::Float;
 use rayon::prelude::*;

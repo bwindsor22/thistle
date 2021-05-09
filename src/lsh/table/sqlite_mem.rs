@@ -1,8 +1,8 @@
 #![cfg(feature = "sqlite")]
 use super::sqlite::SqlTable;
-use crate::data::Integer;
-use crate::prelude::*;
-use crate::{data::Numeric, table::general::Bucket, HashTables};
+use crate::lsh::data::Integer;
+use crate::lsh::prelude::*;
+use crate::lsh::{data::Numeric, table::general::Bucket, HashTables};
 use fnv::FnvHashSet;
 use std::ops::{Deref, DerefMut};
 use std::path::Path;

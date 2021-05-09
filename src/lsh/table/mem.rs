@@ -1,5 +1,5 @@
-use crate::data::Integer;
-use crate::{
+use crate::lsh::data::Integer;
+use crate::lsh::{
     constants::DESCRIBE_MAX,
     data::Numeric,
     prelude::*,

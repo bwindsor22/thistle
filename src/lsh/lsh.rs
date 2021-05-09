@@ -1,6 +1,6 @@
-use crate::data::Integer;
-use crate::table::general::Bucket;
-use crate::{data::Numeric, prelude::*, utils::create_rng};
+use crate::lsh::data::Integer;
+use crate::lsh::table::general::Bucket;
+use crate::lsh::{data::Numeric, prelude::*, utils::create_rng};
 use fnv::FnvHashSet;
 use itertools::Itertools;
 use ndarray::prelude::*;

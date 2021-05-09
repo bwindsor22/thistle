@@ -1,5 +1,5 @@
-use crate::data::Integer;
-use crate::{data::Numeric, prelude::*};
+use crate::lsh::data::Integer;
+use crate::lsh::{data::Numeric, prelude::*};
 use fnv::{FnvHashSet as HashSet, FnvHashSet};
 use serde::{de::DeserializeOwned, Serialize};
 

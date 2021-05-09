@@ -1,8 +1,8 @@
 #![cfg(feature = "sqlite")]
 use super::general::Bucket;
-use crate::constants::DESCRIBE_MAX;
-use crate::data::{Integer, Numeric};
-use crate::prelude::*;
+use crate::lsh::constants::DESCRIBE_MAX;
+use crate::lsh::data::{Integer, Numeric};
+use crate::lsh::prelude::*;
 use fnv::FnvHashSet;
 use rusqlite::{params, Connection, NO_PARAMS};
 use serde::de::DeserializeOwned;

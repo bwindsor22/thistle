@@ -1,6 +1,6 @@
 //! Some utilities to help choose LSH parameters.
-use crate::dist::l2_norm;
-use crate::prelude::*;
+use crate::lsh::dist::l2_norm;
+use crate::lsh::prelude::*;
 use fnv::FnvHashSet;
 use ndarray::aview1;
 use rayon::prelude::*;

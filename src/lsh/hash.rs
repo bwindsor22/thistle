@@ -1,6 +1,6 @@
-use crate::data::Integer;
-use crate::multi_probe::StepWiseProbe;
-use crate::{data::Numeric, dist::l2_norm, multi_probe::QueryDirectedProbe, utils::create_rng};
+use crate::lsh::data::Integer;
+use crate::lsh::multi_probe::StepWiseProbe;
+use crate::lsh::{data::Numeric, dist::l2_norm, multi_probe::QueryDirectedProbe, utils::create_rng};
 use ndarray::prelude::*;
 use ndarray_rand::rand_distr::{StandardNormal, Uniform};
 use ndarray_rand::RandomExt;

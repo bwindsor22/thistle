@@ -1,6 +1,6 @@
 //! Multi probe LSH
-use crate::data::{Integer, Numeric};
-use crate::{prelude::*, utils::create_rng};
+use crate::lsh::data::{Integer, Numeric};
+use crate::lsh::{prelude::*, utils::create_rng};
 use fnv::FnvHashSet;
 use itertools::Itertools;
 use ndarray::prelude::*;

@@ -1,7 +1,7 @@
 //! Re-export of the public api of lsh-rs.
 #[cfg(feature = "sqlite")]
-pub use crate::table::{sqlite::SqlTable, sqlite_mem::SqlTableMem};
-pub use crate::{
+pub use crate::lsh::table::{sqlite::SqlTable, sqlite_mem::SqlTableMem};
+pub use crate::lsh::{
     error::{Error, Result},
     hash::{MinHash, SignRandomProjections, VecHash, L2, MIPS},
     lsh::LSH,
