@@ -3,7 +3,7 @@ use std::fs::File;
 use std::time::Instant;
 use crate::database::Operations;
 
-pub fn example() -> () {
+pub fn time_and_accuracy() -> () {
     let path = "/Users/bradwindsor/ms_projects/thistle/thistle/data/data.tsv";
     let file = File::open(path).expect("could not open file");
 

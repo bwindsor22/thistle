@@ -1,8 +1,8 @@
 #![feature(array_map)]
 use thistle::database::Operations;
 use std::fs;
-use thistle::evaluation::run_eval::{example};
+use thistle::evaluation::run_eval::{time_and_accuracy};
 
 fn main() {
-    example();
+    time_and_accuracy();
 }
