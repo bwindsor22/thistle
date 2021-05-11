@@ -37,7 +37,11 @@ mkdir data
 cd data
 wget https://msmarco.blob.core.windows.net/msmarcoranking/triples.train.small.tar.gz
 tar -xf triples.train.small.tar.gz
-head -n 100 triples.train.small.tsv > data.tsv # or any other size
+export SIZE=10000 # or any other size
+head -n $SIZE triples.train.small.tsv > data.tsv 
+LC_ALL=C tr -dc '\0-\177' <data.tsv >data_cleaned.tsv
+cd .. 
+cargo run
 ```
 To run:
 ```

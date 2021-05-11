@@ -4,7 +4,7 @@ use std::time::Instant;
 use crate::database::Operations;
 
 pub fn time_and_accuracy() -> () {
-    let path = "/Users/bradwindsor/ms_projects/thistle/thistle/data/data.tsv";
+    let path = "/Users/bradwindsor/ms_projects/thistle/thistle/data/data_cleaned.tsv";
     let file = File::open(path).expect("could not open file");
 
     let data = CsvReader::new(file)
