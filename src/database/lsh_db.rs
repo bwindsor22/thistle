@@ -36,6 +36,9 @@ impl Operations for LshDB {
         let query_embedding = get_embedding(&query);
         let mut matching = self.lsh.query_bucket_ids(&query_embedding).unwrap();
         let mut output = Vec::new();
+        if matching.len() == 0 {
+            return output;
+        }
         // println!("matching {:?}", matching);
         let top_n: Vec<u32> = matching.drain(..n as usize).collect();
         for match_ in top_n {

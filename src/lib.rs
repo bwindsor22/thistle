@@ -4,3 +4,4 @@ pub mod database;
 pub mod model;
 pub mod hnswlib;
 pub mod lsh;
+pub mod evaluation;

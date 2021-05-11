@@ -13,6 +13,6 @@ pub fn get_embedding(text: &str) -> Vec<f64> {
 
     let embedding = embedder.encode(text);
     // For dev purposes
-    println!("&embedding[..5] of {}: {:?}", text, &embedding[..5]);
+    // println!("&embedding[..5] of {}: {:?}", text, &embedding[..5]);
     embedding
 }

@@ -45,6 +45,8 @@ skiplist = {version = "0.3"}
 # env_logger = { version = "0.8"}
 # hdf5 = {version = "0.7"}
 
+polars = "0.13.3"
+
 [lib]
 name = "thistle"
 path = "src/lib.rs"
