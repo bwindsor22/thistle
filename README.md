@@ -57,3 +57,4 @@ cargo run > output100.txt
 * https://github.com/cpcdoy/rust-sbert
 * https://github.com/mladvladimir/rust-sentence-transformers
 * https://github.com/ritchie46/lsh-rs
+* https://github.com/microsoft/MSMARCO-Passage-Ranking 
