@@ -30,6 +30,24 @@ rustup toolchain install nightly
 rustup default nightly
 ```
 
+### Running dataset
+Data preparation
+```
+mkdir data
+cd data
+wget https://msmarco.blob.core.windows.net/msmarcoranking/triples.train.small.tar.gz
+tar -xf triples.train.small.tar.gz
+head -n 100 triples.train.small.tsv > data.tsv # or any other size
+```
+To run:
+```
+# see run_eval.rs
+cargo run > output100.txt
+```
+
+### 
+
+
 ### References
 * [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/pdf/1810.04805.pdf)
 * [RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/pdf/1907.11692.pdf)
