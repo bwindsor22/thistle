@@ -210,6 +210,7 @@ where
     }
 }
 
+#[allow(unused)]
 impl<N, K> std::fmt::Debug for MemoryTable<N, K>
 where
     N: Numeric,

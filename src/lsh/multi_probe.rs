@@ -60,6 +60,7 @@ where
     }
 }
 
+#[allow(unused)]
 fn uniform_without_replacement<T: Copy>(bucket: &mut [T], n: usize) -> Vec<T> {
     // https://stackoverflow.com/questions/196017/unique-non-repeating-random-numbers-in-o1#196065
     let mut max_idx = bucket.len() - 1;
@@ -79,6 +80,7 @@ fn uniform_without_replacement<T: Copy>(bucket: &mut [T], n: usize) -> Vec<T> {
     samples
 }
 
+#[allow(unused)]
 fn create_hash_permutation(hash_len: usize, n: usize) -> Vec<i8> {
     let mut permut = vec![0; hash_len];
     let shift_options = [-1i8, 1];

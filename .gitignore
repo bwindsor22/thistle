@@ -3,3 +3,4 @@
 /thistle-env
 *.bak
 dumpreloadtest*
+/data

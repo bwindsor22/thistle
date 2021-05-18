@@ -30,7 +30,12 @@ rustup toolchain install nightly
 rustup default nightly
 ```
 
-### Running dataset
+3. Integration testing
+```
+cargo test
+```
+
+### Running MS MARCO dataset
 Data preparation
 ```
 mkdir data
@@ -38,19 +43,23 @@ cd data
 wget https://msmarco.blob.core.windows.net/msmarcoranking/triples.train.small.tar.gz
 tar -xf triples.train.small.tar.gz
 export SIZE=10000 # or any other size
+<<<<<<< HEAD
 head -n $SIZE triples.train.small.tsv > data.tsv 
 LC_ALL=C tr -dc '\0-\177' <data.tsv >data_cleaned.tsv
 cd .. 
 cargo run
+=======
+head -n $SIZE triples.train.small.tsv > data.tsv
+LC_ALL=C tr -dc '\0-\177' <data.tsv >data_cleaned.tsv
+cd ..
+>>>>>>> 050d0c46449a7ec1f5155e1699e8ed2116f7c153
 ```
+
 To run:
 ```
 # see run_eval.rs
 cargo run > output100.txt
 ```
-
-### 
-
 
 ### References
 * [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/pdf/1810.04805.pdf)
@@ -60,4 +69,12 @@ cargo run > output100.txt
 * https://github.com/guillaume-be/rust-bert
 * https://github.com/cpcdoy/rust-sbert
 * https://github.com/mladvladimir/rust-sentence-transformers
+<<<<<<< HEAD
 * https://github.com/ritchie46/lsh-rs
+=======
+* https://github.com/granne/granne
+* https://github.com/rust-cv/hnsw
+* https://github.com/jean-pierreBoth/hnswlib-rs
+* https://github.com/ritchie46/lsh-rs
+* https://github.com/microsoft/MSMARCO-Passage-Ranking
+>>>>>>> 050d0c46449a7ec1f5155e1699e8ed2116f7c153

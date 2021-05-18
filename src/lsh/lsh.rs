@@ -1,8 +1,9 @@
+#![allow(non_snake_case)]
 use crate::lsh::data::Integer;
 use crate::lsh::table::general::Bucket;
 use crate::lsh::{data::Numeric, prelude::*, utils::create_rng};
 use fnv::FnvHashSet;
-use itertools::Itertools;
+// use itertools::Itertools;
 use ndarray::prelude::*;
 use num::Float;
 use rand::Rng;
@@ -20,7 +21,7 @@ use std::path::Path;
 /// # Example
 ///
 /// ```
-/// use lsh_rs::prelude::*;
+/// use crate::lsh::prelude::*;
 /// let n_projections = 9;
 /// let n_hash_tables = 45;
 /// let dim = 10;
@@ -80,7 +81,7 @@ fn lsh_from_lsh<
     let hashers = match ht.store_hashers(&hashers) {
         Ok(_) => hashers,
         Err(_) => match ht.load_hashers() {
-            Err(e) => panic!(format!("could not load hashers: {}", e)),
+            Err(e) => panic!("could not load hashers: {}", e),
             Ok(hashers) => hashers,
         },
     };
@@ -248,7 +249,7 @@ where
     ///
     /// # Examples
     ///```
-    /// use lsh_rs::prelude::*;
+    /// use crate::lsh::prelude::*;
     /// let mut lsh = LshSql::new(5, 10, 3).srp().unwrap();
     /// let vs = &[vec![2., 3., 4.],
     ///            vec![-1., -1., 1.]];
@@ -286,7 +287,7 @@ where
     ///
     /// # Examples
     ///```
-    /// use lsh_rs::prelude::*;
+    /// use crate::lsh::prelude::*;
     /// use ndarray::prelude::*;
     /// let mut lsh = LshMem::new(5, 10, 3).srp().unwrap();
     /// let vs = array![[1., 2., 3.], [4., 5., 6.]];
@@ -427,7 +428,7 @@ where
     ///
     /// # Examples
     /// ```
-    /// use lsh_rs::prelude::*;
+    /// use crate::lsh::prelude::*;
     /// let mut lsh = LshMem::new(5, 10, 3).srp().unwrap();
     /// let v = &[2., 3., 4.];
     /// let id = lsh.store_vec(v);

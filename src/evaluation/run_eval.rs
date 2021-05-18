@@ -32,9 +32,9 @@ pub fn time_and_accuracy() -> () {
         for i in 0..row_count {
             let query = queries[i].as_str().to_string();
             let query_array = &db.query(query, 1);
-            if (query_array.len() > 0) {
+            if query_array.len() > 0 {
                 let query_result = query_array[0].text.as_str().to_string();
-                if (&query_result == &references[i]) {
+                if &query_result == &references[i] {
                     // println!("correct: expected {:?}, result {:?}", references[i], query_result);
                     correct += 1;
                 } else {

@@ -2,14 +2,14 @@
 use crate::lsh::data::Numeric;
 use ndarray::prelude::*;
 use num::Float;
-use rayon::prelude::*;
+// use rayon::prelude::*;
 
 /// L2 norm of a single vector.
 ///
 /// # Examples
 ///
 /// ```
-/// use lsh_rs::dist::l2_norm;
+/// use crate::lsh::dist::l2_norm;
 /// let a = vec![1., -1.];
 /// let norm_a = l2_norm(&a);
 ///
@@ -32,7 +32,7 @@ pub fn l2_norm<N: Numeric + Float>(x: &[N]) -> N {
 /// # Examples
 ///
 /// ```
-/// use lsh_rs::dist::inner_prod;
+/// use crate::lsh::dist::inner_prod;
 /// let a = vec![1., -1.];
 /// let b = vec![0.2, 1.2];
 /// let prod = inner_prod(&a, &b);
@@ -50,7 +50,7 @@ pub fn inner_prod<N: Numeric + Float>(a: &[N], b: &[N]) -> N {
 /// # Examples
 ///
 /// ```
-/// use lsh_rs::dist::cosine_sim;
+/// use crate::lsh::dist::cosine_sim;
 /// let a = vec![1., -1.];
 /// let b = vec![0.2, 1.2];
 /// let sim = cosine_sim(&a, &b);
