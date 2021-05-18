@@ -70,6 +70,7 @@ cargo run > output100.txt
 * https://github.com/cpcdoy/rust-sbert
 * https://github.com/mladvladimir/rust-sentence-transformers
 <<<<<<< HEAD
+<<<<<<< HEAD
 * https://github.com/ritchie46/lsh-rs
 =======
 * https://github.com/granne/granne
@@ -78,3 +79,7 @@ cargo run > output100.txt
 * https://github.com/ritchie46/lsh-rs
 * https://github.com/microsoft/MSMARCO-Passage-Ranking
 >>>>>>> 050d0c46449a7ec1f5155e1699e8ed2116f7c153
+=======
+* https://github.com/ritchie46/lsh-rs
+* https://github.com/microsoft/MSMARCO-Passage-Ranking 
+>>>>>>> dba2f36ecf6c3d38584facadff8779007454b317
