@@ -10,6 +10,7 @@ pub struct LshDB {
 }
 
 impl Operations for LshDB {
+    #[allow(unused)]
     fn load(&mut self, texts: Vec<String>) {
         let mut vecs = Vec::new();
         for text in texts {
