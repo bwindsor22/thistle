@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 use crate::lsh::data::Integer;
 use crate::lsh::multi_probe::StepWiseProbe;
 use crate::lsh::{data::Numeric, dist::l2_norm, multi_probe::QueryDirectedProbe, utils::create_rng};

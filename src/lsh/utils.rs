@@ -21,6 +21,7 @@ pub fn create_rng(seed: u64) -> SmallRng {
     }
 }
 
+#[allow(unused)]
 pub fn rand_unit_vec<RNG: Rng>(size: usize, rng: RNG) -> Vec<f32> {
     rng.sample_iter(StandardNormal).take(size).collect()
 }
@@ -43,7 +44,7 @@ where
 #[cfg(test)]
 mod test {
     use super::*;
-    use rand::SeedableRng;
+    // use rand::SeedableRng;
 
     #[test]
     fn test_all_eq() {
